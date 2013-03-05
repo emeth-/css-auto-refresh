@@ -7,7 +7,7 @@ David Cushman
 
 How to use
 -----------------
-1) [Drag this to the bookmarks bar](javascript:(function(\){var script=document.createElement('script'\);script.setAttribute('src','http://htmlpreview.github.com/?https://github.com/seanybob/css-auto-refresh/master/css-auto-refresh.js'\);document.getElementsByTagName('head'\)[0].appendChild(script\);})(\);)
+1) [Drag this to the bookmarks bar](javascript:(function(\){var script=document.createElement('script'\);script.setAttribute('src','http://htmlpreview.github.com/?https://github.com/seanybob/css-auto-refresh/master/css-auto-refresh.js'\);document.getElementsByTagName('head'\)[0].appendChild(script\);}\)(\);)<br />
 2) ...(placeholder for the chrome extension)
 
 About
