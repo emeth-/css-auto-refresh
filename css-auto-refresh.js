@@ -81,7 +81,7 @@ function remove_css_file(file_loc)
 }
 
 jQuery(document).ready(function() {
-    get_css_files();
+    load_css_files_variable();
     update_css_files();
     setInterval("update_css_files()", 3000);
 });
