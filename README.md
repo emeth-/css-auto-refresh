@@ -19,3 +19,4 @@ https://chrome.google.com/webstore/detail/refrecssher/pbepemgakpapkpholnanaeielc
 
 About
 -----------------
+Javascript that, when added to a page, reloads css files as they are changed (removing the old versions).
