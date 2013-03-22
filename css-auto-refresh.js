@@ -1,13 +1,14 @@
 
+
 //css-refresh code
 var css_files = {};
+var css_tmp_div = document.createElement('div');
 
 function get_css_files()
 {
     var base_html = document.documentElement.outerHTML;
-    var tempdiv = document.createElement('div');
-    tempdiv.innerHTML = base_html;
-    var stylezzz = tempdiv.getElementsByTagName('link');
+    css_tmp_div.innerHTML = base_html;
+    var stylezzz = css_tmp_div.getElementsByTagName('link');
     var i = stylezzz.length;
     while (i--)
     {
@@ -17,6 +18,7 @@ function get_css_files()
             css_files[x.attr('href').split('?')[0]] = "";
         }
     }
+    css_tmp_div.innerHTML = '';
 }
 
 function update_css_files()
@@ -34,23 +36,38 @@ function update_css_files()
             //reload csv file
             var new_file = file_loc+"?cssrefresh="+(Math.random().toString().replace('.', ''));
             console.log(file_loc, "has been changed, adding ", new_file);
-            var newstylefile = document.createElement('link');
-            newstylefile.setAttribute('href',new_file);
-            newstylefile.setAttribute('rel', "stylesheet");
-            newstylefile.setAttribute('type', "text/css");
-            newstylefile.setAttribute('media', "all");
-            document.getElementsByTagName('head')[0].appendChild(newstylefile);
+            remove_css_file(file_loc);
+            add_css_file(new_file);
         }
         css_files[file_loc] = latest_mod_time;
     });
 }
 
+function add_css_file(new_file)
+{
+    var newstylefile = document.createElement('link');
+    newstylefile.setAttribute('href',new_file);
+    newstylefile.setAttribute('rel', "stylesheet");
+    newstylefile.setAttribute('type', "text/css");
+    newstylefile.setAttribute('media', "all");
+    document.getElementsByTagName('head')[0].appendChild(newstylefile);
+}
+
+function remove_css_file(file_loc)
+{
+    var allsuspects=document.getElementsByTagName('link')
+    for (var i=allsuspects.length; i>=0; i--)
+    {
+        if (allsuspects[i] && allsuspects[i].getAttribute('href')!=null)
+        if (allsuspects[i] && allsuspects[i].getAttribute('href')!=null && allsuspects[i].getAttribute('href').indexOf(file_loc)!=-1)
+        {
+            allsuspects[i].parentNode.removeChild(allsuspects[i])
+        }
+    }
+}
+
 jQuery(document).ready(function() {
-    
     get_css_files();
-    
     update_css_files();
-   
     setInterval("update_css_files()", 3000);
-    
 });
