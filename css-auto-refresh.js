@@ -6,6 +6,8 @@ var css_tmp_div = document.createElement('div');
 
 function get_css_files()
 {
+    var cfiles = [];
+    
     var base_html = document.documentElement.outerHTML;
     css_tmp_div.innerHTML = base_html;
     var stylezzz = css_tmp_div.getElementsByTagName('link');
@@ -15,10 +17,22 @@ function get_css_files()
         var x = jQuery(stylezzz[i]);
         if (x.attr('rel') == "stylesheet")
         {
-            css_files[x.attr('href').split('?')[0]] = "";
+            //css_files[x.attr('href').split('?')[0]] = "";
+            cfiles.push(x.attr('href').split('?')[0]);
         }
     }
     css_tmp_div.innerHTML = '';
+    return cfiles;
+}
+
+function load_css_files_variable()
+{
+    css_files = {};
+    var cfiles = get_css_files();
+    for (var i=0; i<cfiles.length; i++)
+    {
+        css_files[cfiles[i]] = "";
+    }
 }
 
 function update_css_files()
