@@ -12,7 +12,7 @@ javascript:(function(){var script=document.createElement('script');script.setAtt
 </pre>
 <br /><br />
 
-2) Use this chrome extension made by David Cushman which uses this file as its base. <br />
+2) OR Use this chrome extension made by David Cushman which uses this file as its base. <br />
 - [extension](https://chrome.google.com/webstore/detail/refrecssher/pbepemgakpapkpholnanaeielcnlklnn) <br />
 - [extension source](https://github.com/91bananas/refreCSSher)
 
